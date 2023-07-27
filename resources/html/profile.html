@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<title>Профиль</title>
+</head>
+<body>
+<div class="container">
+<h1 id="welcomeMessage"></h1> <br>
+<form action="/forum" method="POST">
+  <button type="submit" class="btn btn-primary">Перейти на форум</button>
+  </form>
+<br>
+<form action="/allusers" method="GET">
+  <button type="submit" class="btn btn-primary">Все зарегистрированные пользователи</button>
+</form>
+<br>
+<form action="/useroption" method="GET">
+  <button type="submit" class="btn btn-primary">Управление аккаунтом</button>
+</form>
+<br>
+<form action="/logout" method="post">
+<button type="submit" class="btn btn-primary">Выйти из аккаунта</button>
+</form>
+<br>
+</div>
+
+<script>
+    function getCookie(name, callback) {
+var cookieValue = "";
+if (document.cookie && document.cookie !== "") {
+  var cookies = document.cookie.split(";");
+  for (var i = 0; i < cookies.length; i++) {
+    var cookie = cookies[i].trim();
+    if (cookie.substring(0, name.length + 1) === (name + "=")) {
+      cookieValue = cookie.substring(name.length + 1);
+      break;
+    }
+  }
+}
+callback(decodeURIComponent(cookieValue));
+}
+
+getCookie("username", function(username) {
+console.log("Username from cookie:", username);
+document.getElementById("welcomeMessage").innerHTML = "Добро пожаловать, " + username + "!";
+});
+</script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Все пользователи</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        table {
+            margin-top: 20px;
+        }
+        th {
+            text-align: center;
+        }
+        tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Все пользователи</h1>
+        <div id="users"></div>
+    </div>
+    <script>
+        function createUserElement(user) {
+            var tr = document.createElement('tr');
+            var tdId = document.createElement('td');
+            var tdLogin = document.createElement('td');
+            tdId.textContent = user.id;
+            tdLogin.textContent = user.login;
+            tr.appendChild(tdId);
+            tr.appendChild(tdLogin);
+            return tr;
+        }
+    
+        fetch('/getallusers')
+            .then(response => response.json())
+            .then(users => {
+                var userElements = users.map(createUserElement);
+    
+                var table = document.createElement('table');
+                table.classList.add('table', 'table-striped', 'table-hover');
+                var thead = document.createElement('thead');
+                var trHead = document.createElement('tr');
+                var thId = document.createElement('th');
+                var thLogin = document.createElement('th');
+                thId.classList.add('id-header');
+                thLogin.classList.add('login-header');
+                trHead.appendChild(thId);
+                trHead.appendChild(thLogin);
+                thead.appendChild(trHead);
+                var tbody = document.createElement('tbody');
+                userElements.forEach(userElement => {
+                    tbody.appendChild(userElement);
+                });
+                table.appendChild(thead);
+                table.appendChild(tbody);
+
+                var usersDiv = document.getElementById('users');
+                usersDiv.appendChild(table);
+            });
+    </script>
+</body>
+</html>
