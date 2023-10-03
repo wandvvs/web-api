@@ -1,4 +1,4 @@
-# ASP.NET Core 7 Middleware-based Web API Project
+# ASP.NET Core 7 Middleware-based Web API Projec
 
 This project is a learning exercise in building a web API using ASP.NET Core 7 without MVC. It utilizes various middleware components to handle different aspects of the application flow.
 
