@@ -4,7 +4,7 @@ This project is a learning exercise in building a web API using ASP.NET Core 7 w
 
 ## Implemented Middleware
 
-- **AuthenticationMiddleware**: Handles authentication process.
+- **AuthenticationMiddleware**: Handles authentication process
 - **RegisterMiddleware**: Manages user registration functionality.
 - **LoginMiddleware**: Handles user login functionality.
 - **LogoutMiddleware**: Manages user logout functionality.
